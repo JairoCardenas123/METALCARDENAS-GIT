@@ -1,0 +1,42 @@
+.metal{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.logo1{
+    border-radius: 400px;
+}
+
+
+.imgT{
+    height: 1000px;
+}
+
+.about{
+    background-color:#91deff;
+    opacity: 0.8    ;
+
+}
+.metal1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.navbar{
+    background-color: rgba(145, 222, 255, 0.7);
+}
+
+.navbar a{
+    font-size: 25px;
+}
+.footer{
+    background-color: #91deff;
+}
+
+.carousel-item{
+    background-color: #91deff;
+    color: #91deff;
+}
