@@ -65,64 +65,69 @@
      <!-- modal crear categorias ini -->
   
      <section class="modalito">
-        <center>
-        <button
-          id="btnCrearCategoria"
-          type="button"
-          class="btn btn-primary tamano"
-          data-bs-toggle="modal"
-          data-bs-target="#modalCategoria"
-          data-bs-whatever="@getbootstrap"
-        >
-          Agregar Categoria
-        </button>
-        
-      </center>
-  
-      <div
-        class="modal fade"
-        id="modalCategoria"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+      <center>
+      <button
+        id="btnCrearCategoria"
+        type="button"
+        class="btn btn-primary tamano"
+        data-bs-toggle="modal"
+        data-bs-target="#modalCategoria"
+        data-bs-whatever="@getbootstrap"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-              <h2 class="modal-title" id="exampleModalLabel">Nueva Categoria</h2>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body ">
-              <form id="insertFormulario">
-                <div class="mb-3">
-                  <label for="CategoriaNombre" class="col-form-label">Categoria Nombre:</label>
-                  <input type="text" class="form-control formTam" id="name" />
-                </div>
-               
-                <div class="mb-3">
-                  <label for="Descripcion" class="col-form-label">Descripcion:</label>
-                  <input type="text" class="form-control formTam" id="description" />
-                </div>
-  
-                <div class="mb-3">
-                  <label for="Imagen" class="col-form-label">Imagen:</label>
-                  <input type="text" class="form-control formTam" id="image" />
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button"class="btn btn-secondary btn-lg"data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
-            </div>
-          </form>
+        Agregar Categoria
+      </button>
+      
+    </center>
+
+    <div
+      class="modal fade"
+      id="modalCategoria"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h2 class="modal-title" id="exampleModalLabel">Nueva Categoria</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
+          <div class="modal-body ">
+            <form id="insertFormulario">
+              <div class="mb-3">
+                <label for="nombre" class="col-form-label">Proyecto:</label>
+                <input type="text" class="form-control formTam" id="nombre" />
+              </div>
+             
+              <div class="mb-3">
+                <label for="descripcion" class="col-form-label">Descripcion:</label>
+                <input type="text" class="form-control formTam" id="descripcion" />
+              </div>
+
+              <div class="mb-3">
+                <label for="tiempo" class="col-form-label">Plazo Final:</label>
+                <input type="text" class="form-control formTam" id="tiempo" />
+              </div> 
+
+              <div class="mb-3">
+                <label for="costo" class="col-form-label">Costo:</label>
+                <input type="text" class="form-control formTam" id="costo" />
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button"class="btn btn-secondary btn-lg"data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+          </div>
+        </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
       <!-- modal crear Categoria final -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -134,7 +139,7 @@
             <div class="modal-body">
               <form id="formularioUpdate">
                 <div class="mb-3">
-                  <label for="CategoriaNombre" class="col-form-label">Categoria Nombre:</label>
+                  <label for="CatalogoNombre" class="col-form-label">Categoria Nombre:</label>
                   <input type="text" class="form-control formTam" id="CategoriaNombreUpdate" />
                 </div>
                
@@ -158,24 +163,24 @@
           </div>
         </div>
       </div>
-    </section>
+      
       <!--Tabla Agregar Start-->
     <div class="cotizaciones container">
      
         <table class="table table-success table-striped table-bordered">
           <thead class="thead-light">
             <tr>
-              <th>CategoriaID</th>
-              <th>CategoriaNombre</th>
+              <th>Proyecto</th>
               <th>Descripcion</th>
-              <th>Imagen</th>
-              <th>delete</th>
-              <th>update</th>
+              <th>Plazo Final</th>
+              <th>Costo</th>
+<!--               <th>delete</th>
+              <th>update</th> -->
               
   
             </tr>
           </thead>
-          <tbody id="cotizaciones" class="listado-estudiantes">
+          <tbody  class="listado-estudiantes" id="cotizaciones">
 
           </tbody>
         </table>
@@ -245,7 +250,7 @@
     <script src="mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script type="module" src="./cotizaciones.js"></script>
+    <script src="./cotizaciones.js" type=module></script>
     <script src="js/main.js"></script>
     <script src="./index.js"></script>
 </body>

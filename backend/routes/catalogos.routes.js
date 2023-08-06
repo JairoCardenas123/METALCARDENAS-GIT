@@ -3,27 +3,16 @@ import { check } from "express-validator";
 /* import validateDocuments from "../middlewares/validate.documents.js"; */
 /* import Equipos from "../models/Equipos.js"; */
 
-import { obtainCatalogo, obtainOneCiclista,deleteCiclista,insertCiclista,updateCiclista } from "../controllers/ciclistas.controllers.js";
+import { obtainCatalogos, obtainOneCiclista,deleteCiclista,insertCatalogo,updateCiclista } from "../controllers/catalogos.controllers.js";
 
 
 const router = Router();
 
-router.get("/all",obtainCatalogo);
+router.get("/all",obtainCatalogos);
 
 router.get("/one/:id",obtainOneCiclista);
 
-router.post("/add",[
-            check('nombre','Nombre es requerido').not().isEmpty(),
-            check('equipo').custom(async(equipo='')=>{
-                const existeEquipo = await equipos.findOne({equipo});
-                if (!existeEquipo) {
-                    throw new Error(`El equipo ${equipo} no esta registrado`)
-                    
-                }
-
-            }),
-            /* validateDocuments */
-],insertCiclista);
+router.post("/add",insertCatalogo);
 
 router.delete("/del/:id",deleteCiclista);
 

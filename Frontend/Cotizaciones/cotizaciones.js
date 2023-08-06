@@ -1,5 +1,6 @@
- import  {getCatalogos,insertCiclistas}  from "../js/API.js";
-document.addEventListener('DOMContentLoaded',()=>{
+ import {getCatalogos,insertCatalogo}  from "../js/API.js";
+
+addEventListener('DOMContentLoaded',()=>{
     cargaCatalogos();
 })
 
@@ -7,12 +8,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 async function cargaCatalogos() {
     try {
       const catalogos = await getCatalogos();
-      const tablaClientes = document.getElementById('cotizaciones');
+      const nuevoCotizaciones = document.getElementById('cotizaciones')
       console.log(catalogos);
-      catalogos.forEach(element => {
-        const { nombre, descripcion, tiempo, costo, Criterios, Costo } = element;
-        const row = tablaClientes.insertRow();
-        row.innerHTML = `
+      catalogos.forEach(catalogo =>{
+        const { nombre, descripcion, tiempo, costo} = catalogo;
+        nuevoCotizaciones.innerHTML +=
+`
         <tr>
           <td>${nombre}</td>
           <td>${descripcion}</td>
@@ -20,11 +21,44 @@ async function cargaCatalogos() {
           <td>${costo}</td>
         </tr>
         `;
-      });
+      });   
     } catch (error) {
       console.log(error);
     }
-  }
+}
+
+/* INGRESAR NUEVA CATEGORIA  - CRUD (C) */
+
+const formInsert=document.querySelector('#insertFormulario')
+
+formInsert.addEventListener('submit',(e)=>{
+    insert(e);
+})
+
+const insert=(e)=>{
+    e.preventDefault();
+    const nombre=document.querySelector('#nombre').value;
+    const descripcion=document.querySelector('#descripcion').value;
+    const tiempo=document.querySelector('#tiempo').value;
+    const costo=document.querySelector('#costo').value;
+    const categoria = {
+        nombre,
+        descripcion,
+        tiempo,
+        costo,
+    }
+    console.log(categoria);
+
+    if(validation(categoria)){
+        alert("todos los datos son obligatorios")
+    }return insertCatalogo(categoria);
+}
+function validation(Objecto){
+    return !Object.values(Objecto).every(element=>element != '')
+}
+
+
+
   
 /* <tr>
 <th scope="row">${Cliente}</th>
@@ -59,9 +93,9 @@ const borrar=(id)=>{
 
 
 
-/* INGRESAR NUEVA CATEGORIA  - CRUD (C) */
 
-const formInsert=document.querySelector('#insertFormulario')
+
+/* const formInsert=document.querySelector('#insertFormulario')
 
 formInsert.addEventListener('submit',(e)=>{
     insert(e);
@@ -81,12 +115,36 @@ const insert=(e)=>{
 
     if(validation(categoria)){
         alert("todos los datos son obligatorios")
-    }return insertCiclistas(categoria);
+    }return nuevoCatalogo(categoria);
 }
 function validation(Objecto){
     return !Object.values(Objecto).every(element=>element != '')
 }
 
+
+ */
+
+/* 
+const insert=(e)=>{
+    e.preventDefault();
+    const CategoriaNombre=document.querySelector('#name').value;
+    const Descripcion=document.querySelector('#description').value;
+    const Imagen=document.querySelector('#image').value;
+    const categoria = {
+        CategoriaNombre,
+        Descripcion,
+        Imagen,
+    }
+    console.log(categoria);
+
+    if(validation(categoria)){
+        alert("todos los datos son obligatorios")
+    }return nuevaCategoria(categoria);
+}
+function validation(Objecto){
+    return !Object.values(Objecto).every(element=>element != '')
+}
+ */
 
 /* ELIMINAR CATEGORIA  - CRUD (D) */
 

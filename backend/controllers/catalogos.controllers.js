@@ -1,6 +1,6 @@
 import Catalogos from "../models/Catalogo.js";
 
-const obtainCatalogo = async (req,res)=>{
+const obtainCatalogos = async (req,res)=>{
     try {
         const catalogo= await Catalogos.find();
         res.json(catalogo)
@@ -11,28 +11,26 @@ const obtainCatalogo = async (req,res)=>{
 }
 
 
+const insertCatalogo= async(req,res)=>{
+    const catalogo = new Catalogos(req.body);
+    
+    try {
+        const newCatalogo = await catalogo.save();
+        res.json(newCatalogo);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const obtainOneCiclista = async(req,res)=>{
     try {
-        const ciclista = await Catalogo.findOne({_id:req.params.id});
+        const ciclista = await Catalogos.findOne({_id:req.params.id});
         res.json(ciclista)
     } catch (error) {
         console.log(error);
     }
 }
-
-
-const insertCiclista= async(req,res)=>{
-    const ciclista = new Catalogo(req.body);
-    
-    try {
-        const newCiclista = await ciclista.save();
-        res.json(newCiclista);
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 
 const deleteCiclista = async (req, res)=>{
     try {
@@ -81,9 +79,9 @@ const updateCiclista = async (req, res)=>{{
 }}
 
 export {
-    obtainCatalogo,
+    obtainCatalogos,
     obtainOneCiclista,
-    insertCiclista,
+    insertCatalogo,
     deleteCiclista,
     updateCiclista
 }

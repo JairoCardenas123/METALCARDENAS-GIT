@@ -1,4 +1,4 @@
-import { getCatalogos,nuevaCategoria,deleteCategory,editarCategory } from "../js/API.js";
+import { getCatalogos,nuevoCatalogo,deleteCategory,editarCategory } from "../js/API.js";
 
 addEventListener('DOMContentLoaded',()=>{
     cargaCatalogos();
@@ -51,6 +51,7 @@ const borrar=(id)=>{
 
 /* INGRESAR NUEVA CATEGORIA  - CRUD (C) */
 
+
 const formInsert=document.querySelector('#insertFormulario')
 
 formInsert.addEventListener('submit',(e)=>{
@@ -71,8 +72,22 @@ const insert=(e)=>{
 
     if(validation(categoria)){
         alert("todos los datos son obligatorios")
-    }return nuevaCategoria(categoria);
+    }else{
+        return nuevoCatalogo(categoria);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 function validation(Objecto){
     return !Object.values(Objecto).every(element=>element != '')
 }

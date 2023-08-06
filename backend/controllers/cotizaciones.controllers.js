@@ -1,6 +1,6 @@
 import Cotizaciones from "../models/Cotizaciones.js";
 
-const obtainCotizaciones = async (req,res)=>{
+const obtainCiclista = async (req,res)=>{
     try {
         const clientes= await Cotizaciones.find();
         res.json(clientes)
@@ -81,7 +81,7 @@ const updateCiclista = async (req, res)=>{{
 }}
 
 export {
-    obtainCotizaciones,
+    obtainCiclista,
     obtainOneCiclista,
     insertCiclista,
     deleteCiclista,

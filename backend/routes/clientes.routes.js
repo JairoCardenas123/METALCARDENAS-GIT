@@ -12,18 +12,7 @@ router.get("/all",obtainCliente);
 
 router.get("/one/:id",obtainOneCiclista);
 
-router.post("/add",[
-            check('nombre','Nombre es requerido').not().isEmpty(),
-            check('equipo').custom(async(equipo='')=>{
-                const existeEquipo = await Equipos.findOne({equipo});
-                if (!existeEquipo) {
-                    throw new Error(`El equipo ${equipo} no esta registrado`)
-                    
-                }
-
-            }),
-            /* validateDocuments */
-],insertCiclista);
+router.post("/add",insertCiclista);
 
 router.delete("/del/:id",deleteCiclista);
 
