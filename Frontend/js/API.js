@@ -1,4 +1,6 @@
-const urlCatalogos = "http://localhost:8001/api/Catalogos"
+/* const urlCatalogos = "http://localhost:8001/api/Catalogos"
+ */const urlCotizaciones = "http://localhost:8001/api/Cotizaciones"
+const urlClientes = "http://localhost:8001/api/Clientes"
 
 /* export const getCatalogos = async()=>{
     try {
@@ -14,10 +16,10 @@ const urlCatalogos = "http://localhost:8001/api/Catalogos"
 // ? ------------------------ CATEGORIAS API --------------------------------
 
 
-export async function getCatalogos(){
+export async function getCotizaciones(){
     try {
-        const ciclistas = await fetch(`${urlCatalogos}/all`)
-        return ciclistas.json()
+        const cotizaciones = await fetch(`${urlCotizaciones}/all`)
+        return cotizaciones.json()
     } catch (error) {
         console.log(error);
         
@@ -25,10 +27,36 @@ export async function getCatalogos(){
 }
 
 
-
-export const insertCatalogo = async(catalogo)=>{
+export async function getClientes(){
     try {
-        await fetch(`${urlCatalogos}/add`,{
+        const clientes = await fetch(`${urlClientes}/all`)
+        return clientes.json()
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+export const insertClientes = async(catalogo)=>{
+    try {
+        await fetch(`${urlClientes}/add`,{
+            method:'POST',
+            body:JSON.stringify(catalogo),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        window.location.href = "clientes.html"
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+export const insertCotizaciones = async(catalogo)=>{
+    try {
+        await fetch(`${urlCotizaciones}/add`,{
             method:'POST',
             body:JSON.stringify(catalogo),
             headers:{
@@ -41,57 +69,53 @@ export const insertCatalogo = async(catalogo)=>{
     }
 }
 
-/* export async function nuevoCatalogo(data){
+export const deleteClientes = async (id) => {
     try {
-        const ciclistas = await fetch(`${urlCiclistas}/add`,{
-            method: 'POST',
-            headers:{
-                'Content-type':'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const response = await ciclistas.json();
-        return response
-    } catch (error) {
-        console.log(error);
-    }
-}
- */
-
-
-/* export const deleteCategory = async (id) => {
-    try {
-        await fetch(`${url}/${id}`,{
+        await fetch(`${urlClientes}/del/${id}`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'
             }
         })
-        window.location.href = 'index.html'
-    } catch (error) {
+        window.location.href = 'clientes.html'
+   } catch (error) {
         console.log(error);
     }
 };
 
-
-
-export const editarCategory = async (category,id) => {
+export const deleteCotizaciones = async (id) => {
     try {
-        await fetch(`${url}/${id}`,{
-            method:'PUT',
-            body:JSON.stringify(category),
+        await fetch(`${urlCotizaciones}/del/${id}`,{
+            method:'DELETE',
             headers:{
                 'Content-Type':'application/json'
             }
         })
-        window.location.href = 'index.html'
-    } catch (error) {
+        window.location.href = 'cotizaciones.html'
+   } catch (error) {
+        console.log(error);
+    }
+};
+
+
+
+/* 
+export const editarClientes = async (clientes,id) => {
+    try {
+        await fetch(`${urlClientes}/upd/${id}`,{
+            method:'PUT',
+            body:JSON.stringify(clientes),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+/*         window.location.href = 'clientes.html'
+ */    /* } catch (error) {
         console.log(error);
     }
  
 };
- */
+  */ 
 
 
 /* export const obtenerCategory = async (id) => {

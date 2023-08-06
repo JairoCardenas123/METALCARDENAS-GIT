@@ -1,28 +1,30 @@
- import {getCotizaciones,insertCotizaciones,deleteCotizaciones}  from "../js/API.js";
+ import {getClientes,insertClientes,deleteClientes,editarClientes}  from "../js/API.js";
 
 addEventListener('DOMContentLoaded',()=>{
     cargaCatalogos();
 })
 
-const nuevoCotizaciones = document.getElementById('cotizaciones')
+const nuevoCotizaciones = document.getElementById('clientes')
 
 
 async function cargaCatalogos() {
     try {
-      const catalogos = await getCotizaciones();
+      const catalogos = await getClientes();
       console.log(catalogos);
       catalogos.forEach(catalogo =>{
-        const { _id,Cliente, Concepto, ModoDePago, PlazoFinal, Criterios, Costo} = catalogo;
+        const {_id, nombre, email, direccion, celular, cedula, contactoRespaldo} = catalogo;
         nuevoCotizaciones.innerHTML +=
 `
         <tr>
-          <td>${Cliente}</td>
-          <td>${Concepto}</td>
-          <td>${ModoDePago}</td>
-          <td>${PlazoFinal}</td>
-          <td>${Criterios}</td>
-          <td>${Costo}</td>
+          <td>${nombre}</td>
+          <td>${email}</td>
+          <td>${direccion}</td>
+          <td>${celular}</td>
+          <td>${cedula}</td>
+          <td>${contactoRespaldo}</td>
           <td> <button class="btn btn-danger delete" id="${_id}">Delete</button></td>
+          <td><button type="button" class="btn btn-warning update" data-bs-toggle="modal" id="${_id}"  data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" >update</button></td>
+
 
         </tr>
         `;
@@ -42,36 +44,37 @@ formInsert.addEventListener('submit',(e)=>{
 
 const insert=(e)=>{
     e.preventDefault();
-    const Cliente=document.querySelector('#Cliente').value;
-    const Concepto=document.querySelector('#Concepto').value;
-    const ModoDePago=document.querySelector('#ModoDePago').value;
-    const PlazoFinal=document.querySelector('#PlazoFinal').value;
-    const Criterios=document.querySelector('#Criterios').value;
-    const Costo=document.querySelector('#Costo').value;
+    const nombre=document.querySelector('#nombre').value;
+    const email=document.querySelector('#email').value;
+    const direccion=document.querySelector('#direccion').value;
+    const celular=document.querySelector('#celular').value;
+    const cedula=document.querySelector('#cedula').value;
+    const contactoRespaldo=document.querySelector('#contactoRespaldo').value;
     const categoria = {
-        Cliente,
-        Concepto,
-        ModoDePago,
-        PlazoFinal,
-        Criterios,
-        Costo,
+        nombre,
+        email,
+        direccion,
+        celular,
+        cedula,
+        contactoRespaldo,
 
     }
     console.log(categoria);
 
     if(validation(categoria)){
         alert("todos los datos son obligatorios")
-    }return insertCotizaciones(categoria);
+    }return insertClientes(categoria);
 }
 function validation(Objecto){
     return !Object.values(Objecto).every(element=>element != '')
 }
 
+  
 const borrar=(id)=>{
     const confir = confirm("desea eliminarlo");
     if(confir){
         console.log("uno");
-        deleteCotizaciones(id);
+        deleteClientes(id);
     }
 }
 
@@ -81,14 +84,9 @@ nuevoCotizaciones.addEventListener('click',(e)=>{
         borrar(id);
     }else if(e.target.classList.contains('update')){
         const id=e.target.getAttribute('id');
-        editarCategory(id);
+        editarClientes(id);
     }
 })
-
-
-
-
-  
 /* <tr>
 <th scope="row">${Cliente}</th>
 <td>${Concepto}</td>
@@ -101,8 +99,6 @@ nuevoCotizaciones.addEventListener('click',(e)=>{
 </tr> */
 
 
-
- 
 /* LISTAR CATEGORIAS  - CRUD (R) */
 
 
@@ -166,18 +162,56 @@ function validation(Objecto){
 
 //EDITAR CATEGORIA - CRUD (U)
 
-/* const getCliente=async(id)=>{
+ const getCliente=async(id)=>{
     const data=await categoria(id);
-    const {CategoriaID ,CategoriaNombre, Descripcion ,Imagen} =data[0];
+    const {_id ,nombre ,email, direccion ,celular,cedula,contactoRespaldo} =data[0];
     console.log(data);
     console.log(CategoriaID);
-    document.querySelector('#idUpdate')
-    document.querySelector('#CategoriaNombreUpdate')
-    document.querySelector('#DescripcionUpdate')
-    document.querySelector('#ImagenUpdate')
+    document.querySelector('#idUpdate').value = _id
+    document.querySelector('#nombreUpdate').value = nombre
+    document.querySelector('#emailUpdate').value = email
+    document.querySelector('#direccionUpdate').value = direccion
+    document.querySelector('#celularUpdate').value = celular
+    document.querySelector('#cedulaUpdate').value = cedula
+    document.querySelector('#contactoRespaldoUpdate').value = contactoRespaldo
+}
+
+const updateForm =document.querySelector('#formularioUpdate')
+
+updateForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    updateCli();
+})
+
+function updateCli(){
+    const id = document.querySelector('#idUpdate').value;
+    const nombre = document.querySelector('#nombreUpdate').value;
+    const email = document.querySelector('#emailUpdate').value;
+    const direccion = document.querySelector('#direccionUpdate').value;
+    const celular = document.querySelector('#celularUpdate').value;
+    const cedula = document.querySelector('#cedulaUpdate').value;
+    const contactoRespaldo = document.querySelector('#contactoRespaldoUpdate').value;
+
+    const cliente = {
+        nombre,
+        email,
+        direccion,
+        celular,
+        cedula,
+        contactoRespaldo,
+    }
+    console.log(cliente,id);
+    if(validation1(cliente)){
+        alert("Todos los campos son obligatorios")
+    }else{
+        return editarClientes(cliente,id)
+    }
 
 }
 
- */
-
+function validation1(obj){
+    return !Object.values(obj).every(element=>element !== '')
+}
+ 
+ 
 

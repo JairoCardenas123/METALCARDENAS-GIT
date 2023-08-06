@@ -3,19 +3,19 @@ import { check } from "express-validator";
 /* import validateDocuments from "../middlewares/validate.documents.js"; */
 /* import Equipos from "../models/Equipos.js"; */
 
-import {obtainCliente,obtainOneCiclista,deleteCiclista,insertCiclista,updateCiclista } from "../controllers/clientes.controllers.js";
+import {obtainCliente,obtainOneCliente,deleteCliente,insertClientes,updateCliente} from "../controllers/clientes.controllers.js";
 
 
 const router = Router();
 
 router.get("/all",obtainCliente);
 
-router.get("/one/:id",obtainOneCiclista);
+router.get("/one/:id",obtainOneCliente);
 
-router.post("/add",insertCiclista);
+router.post("/add",insertClientes);
 
-router.delete("/del/:id",deleteCiclista);
+router.delete("/del/:id",deleteCliente);
 
-router.patch("/upd/:id",updateCiclista);
+router.patch("/upd/:id",updateCliente);
 
 export default router;

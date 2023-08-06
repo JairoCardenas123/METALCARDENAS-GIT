@@ -11,18 +11,8 @@ const obtainCliente = async (req,res)=>{
 }
 
 
-const obtainOneCiclista = async(req,res)=>{
-    try {
-        const ciclista = await Catalogo.findOne({_id:req.params.id});
-        res.json(ciclista)
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
-const insertCiclista= async(req,res)=>{
-    const ciclista = new Catalogo(req.body);
+const insertClientes= async(req,res)=>{
+    const ciclista = new Clientes(req.body);
     
     try {
         const newCiclista = await ciclista.save();
@@ -33,10 +23,21 @@ const insertCiclista= async(req,res)=>{
     }
 }
 
-
-const deleteCiclista = async (req, res)=>{
+const obtainOneCliente = async(req,res)=>{
     try {
-        await Catalogo.deleteOne({_id:req.params.id});
+        const ciclista = await Clientes.findOne({_id:req.params.id});
+        res.json(ciclista)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+
+const deleteCliente = async (req, res)=>{
+    try {
+        await Clientes.deleteOne({_id:req.params.id});
         res.status(200).send({
             response:"A la verga la info"
         })
@@ -45,35 +46,40 @@ const deleteCiclista = async (req, res)=>{
     }
 }
 
-const updateCiclista = async (req, res)=>{{
+const updateCliente = async (req, res)=>{{
     try {
-        const ciclista = await Catalogo.findOne({_id:req.params.id})
+        const clientes = await Clientes.findOne({_id:req.params.id})
 
         if (req.body.nombre) {
-            ciclista.nombre = req.body.nombre;
+            clientes.nombre = req.body.nombre;
             
         }
-        if (req.body.edad) {
-            ciclista.edad = req.body.edad;
+        if (req.body.email) {
+            clientes.email = req.body.email;
             
         }
 
-        if (req.body.país) {
-            ciclista.país = req.body.país;
+        if (req.body.direccion) {
+            clientes.direccion = req.body.direccion;
             
         }
-        if (req.body.equipo) {
-            ciclista.equipo = req.body.equipo;
+        if (req.body.celular) {
+            clientes.celular = req.body.celular;
             
         }
-        if (req.body.victorias) {
-            ciclista.victorias = req.body.victorias;
+        if (req.body.cedula) {
+            clientes.cedula = req.body.cedula;
+            
+        }
+        if (req.body.contactoRespaldo) {
+            clientes.contactoRespaldo = req.body.contactoRespaldo;
             
         }
   
+  
 
-        await ciclista.save();
-        res.send(ciclista);
+        await clientes.save();
+        res.send(clientes);
 
     } catch (error) {
         console.log(error);
@@ -82,8 +88,8 @@ const updateCiclista = async (req, res)=>{{
 
 export {
     obtainCliente,
-    obtainOneCiclista,
-    insertCiclista,
-    deleteCiclista,
-    updateCiclista
+    obtainOneCliente,
+    insertClientes,
+    deleteCliente,
+    updateCliente
 }

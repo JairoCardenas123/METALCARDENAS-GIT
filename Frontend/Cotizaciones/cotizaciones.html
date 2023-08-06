@@ -38,10 +38,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="catalogo.html" class="nav-item nav-link active">Catalogo</a>
-                    <a href="cotizaciones.html" class="nav-item nav-link">Cotizaciones</a>
-                    <a href="clientes.html" class="nav-item nav-link">Clientes</a>
+                    <a href="../1.index/index.html" class="nav-item nav-link">Home</a>
+                    <a href="../Catalogos/catalogo.html" class="nav-item nav-link active">Catalogo</a>
+                    <a href="../Cotizaciones/cotizaciones.html" class="nav-item nav-link">Cotizaciones</a>
+                    <a href="../Clientes/clientes.html" class="nav-item nav-link">Clientes</a>
                 </div>
             </div>
         </nav>
@@ -74,7 +74,7 @@
         data-bs-target="#modalCategoria"
         data-bs-whatever="@getbootstrap"
       >
-        Agregar Categoria
+        ¿Nueva Cotizacion? :D
       </button>
       
     </center>
@@ -100,23 +100,33 @@
           <div class="modal-body ">
             <form id="insertFormulario">
               <div class="mb-3">
-                <label for="nombre" class="col-form-label">Proyecto:</label>
-                <input type="text" class="form-control formTam" id="nombre" />
+                <label for="Cliente" class="col-form-label">Cliente:</label>
+                <input type="text" class="form-control formTam" id="Cliente" />
               </div>
              
               <div class="mb-3">
-                <label for="descripcion" class="col-form-label">Descripcion:</label>
-                <input type="text" class="form-control formTam" id="descripcion" />
+                <label for="Concepto" class="col-form-label">Concepto:</label>
+                <input type="text" class="form-control formTam" id="Concepto" />
               </div>
 
               <div class="mb-3">
-                <label for="tiempo" class="col-form-label">Plazo Final:</label>
-                <input type="text" class="form-control formTam" id="tiempo" />
+                <label for="ModoDePago" class="col-form-label">ModoDePago:</label>
+                <input type="text" class="form-control formTam" id="ModoDePago" />
               </div> 
 
               <div class="mb-3">
-                <label for="costo" class="col-form-label">Costo:</label>
-                <input type="text" class="form-control formTam" id="costo" />
+                <label for="PlazoFinal" class="col-form-label">PlazoFinal:</label>
+                <input type="text" class="form-control formTam" id="PlazoFinal" />
+              </div>
+
+              <div class="mb-3">
+                <label for="Criterios" class="col-form-label">Criterios:</label>
+                <input type="text" class="form-control formTam" id="Criterios" />
+              </div>
+
+              <div class="mb-3">
+                <label for="Costo" class="col-form-label">Costo:</label>
+                <input type="text" class="form-control formTam" id="Costo" />
               </div>
           </div>
           <div class="modal-footer">
@@ -170,10 +180,14 @@
         <table class="table table-success table-striped table-bordered">
           <thead class="thead-light">
             <tr>
-              <th>Proyecto</th>
-              <th>Descripcion</th>
+              <th>Cliente</th>
+              <th>Concepto</th>
+              <th>Modo De Pago</th>
               <th>Plazo Final</th>
-              <th>Costo</th>
+              <th>Criterios</th>
+              <th>Costo Final</th>
+              <th>Eliminar</th>
+
 <!--               <th>delete</th>
               <th>update</th> -->
               

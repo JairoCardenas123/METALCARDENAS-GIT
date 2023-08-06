@@ -23,8 +23,8 @@
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/about.css">
+    <link href="../css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 
 <body>
@@ -39,10 +39,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
-                    <a href="catalogo.html" class="nav-item nav-link active">Catalogo</a>
-                    <a href="cotizaciones.html" class="nav-item nav-link">Cotizaciones</a>
-                    <a href="clientes.html" class="nav-item nav-link">Clientes</a>
+                    <a href="../1.index/index.html" class="nav-item nav-link">Home</a>
+                    <a href="../Catalogos/catalogo.html" class="nav-item nav-link active">Catalogo</a>
+                    <a href="../Cotizaciones/cotizaciones.html" class="nav-item nav-link">Cotizaciones</a>
+                    <a href="../Clientes/clientes.html" class="nav-item nav-link">Clientes</a>
                 </div>
             </div>
         </nav>
@@ -74,7 +74,7 @@
           data-bs-target="#modalCategoria"
           data-bs-whatever="@getbootstrap"
         >
-          Agregar Categoria
+          Agregar Nuevo Cliente
         </button>
         
       </center>
@@ -100,18 +100,33 @@
             <div class="modal-body ">
               <form id="insertFormulario">
                 <div class="mb-3">
-                  <label for="CategoriaNombre" class="col-form-label">Categoria Nombre:</label>
-                  <input type="text" class="form-control formTam" id="name" />
+                  <label for="nombre" class="col-form-label">nombre:</label>
+                  <input type="text" class="form-control formTam" id="nombre" />
                 </div>
                
                 <div class="mb-3">
-                  <label for="Descripcion" class="col-form-label">Descripcion:</label>
-                  <input type="text" class="form-control formTam" id="description" />
+                  <label for="email" class="col-form-label">email:</label>
+                  <input type="text" class="form-control formTam" id="email" />
                 </div>
   
                 <div class="mb-3">
-                  <label for="Imagen" class="col-form-label">Imagen:</label>
-                  <input type="text" class="form-control formTam" id="image" />
+                  <label for="direccion" class="col-form-label">direccion:</label>
+                  <input type="text" class="form-control formTam" id="direccion" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="celular" class="col-form-label">celular:</label>
+                  <input type="text" class="form-control formTam" id="celular" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="cedula" class="col-form-label">cedula:</label>
+                  <input type="text" class="form-control formTam" id="cedula" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactoRespaldo" class="col-form-label">contactoRespaldo:</label>
+                  <input type="text" class="form-control formTam" id="contactoRespaldo" />
                 </div>
             </div>
             <div class="modal-footer">
@@ -134,18 +149,33 @@
             <div class="modal-body">
               <form id="formularioUpdate">
                 <div class="mb-3">
-                  <label for="CategoriaNombre" class="col-form-label">Categoria Nombre:</label>
-                  <input type="text" class="form-control formTam" id="CategoriaNombreUpdate" />
+                  <label for="nombre" class="col-form-label">Categoria Nombre:</label>
+                  <input type="text" class="form-control formTam" id="nombreUpdate" />
                 </div>
                
                 <div class="mb-3">
-                  <label for="Descripcion" class="col-form-label">Descripcion:</label>
-                  <input type="text" class="form-control formTam" id="DescripcionUpdate" />
+                  <label for="email" class="col-form-label">Descripcion:</label>
+                  <input type="text" class="form-control formTam" id="emailUpdate" />
                 </div>
       
                 <div class="mb-3">
-                  <label for="Imagen" class="col-form-label">Imagen:</label>
-                  <input type="text" class="form-control formTam" id="ImagenUpdate" />
+                  <label for="direccion" class="col-form-label">Imagen:</label>
+                  <input type="text" class="form-control formTam" id="direccionUpdate" />
+                </div>
+                      
+                <div class="mb-3">
+                  <label for="celular" class="col-form-label">Imagen:</label>
+                  <input type="text" class="form-control formTam" id="celularUpdate" />
+                </div>
+                      
+                <div class="mb-3">
+                  <label for="cedula" class="col-form-label">Imagen:</label>
+                  <input type="text" class="form-control formTam" id="cedulaUpdate" />
+                </div>
+                      
+                <div class="mb-3">
+                  <label for="contactoRespaldo" class="col-form-label">Imagen:</label>
+                  <input type="text" class="form-control formTam" id="contactoRespaldoUpdate" />
                 </div>
                 <input id="idUpdate" name="idUpdate" type="hidden" value="">
                 <button type="submit" class="btn btn-dark update" data-bs-dismiss="modal">Submit</button>
@@ -166,17 +196,18 @@
         <table class="table table-success table-striped table-bordered">
           <thead class="thead-light">
             <tr>
-              <th>CategoriaID</th>
-              <th>CategoriaNombre</th>
-              <th>Descripcion</th>
-              <th>Imagen</th>
-              <th>delete</th>
-              <th>update</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Direccion</th>
+              <th>Celular</th>
+              <th>Cedula</th>
+              <th>Contacto Respaldo</th>
+              <th>Eliminar</th>
               
   
             </tr>
           </thead>
-          <tbody id="categories" class="listado-estudiantes">
+          <tbody id="clientes" class="listado-estudiantes">
   
   
   
@@ -249,6 +280,7 @@
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
+    <script src="./clientes.js" type="module"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

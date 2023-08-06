@@ -3,19 +3,19 @@ import { check } from "express-validator";
 /* import validateDocuments from "../middlewares/validate.documents.js"; */
 /* import Equipos from "../models/Equipos.js"; */
 
-import {obtainCiclista,obtainOneCiclista,deleteCiclista,insertCiclista,updateCiclista } from "../controllers/cotizaciones.controllers.js";
+import {obtainCotizacion,obtainOneCotizacion,deleteCotizacion,insertCotizacion,updateCotizacion } from "../controllers/cotizaciones.controllers.js";
 
 
 const router = Router();
 
-router.get("/all",obtainCiclista);
+router.get("/all",obtainCotizacion);
 
-router.get("/one/:id",obtainOneCiclista);
+router.get("/one/:id",obtainOneCotizacion);
 
-router.post("/add",insertCiclista);
+router.post("/add",insertCotizacion);
 
-router.delete("/del/:id",deleteCiclista);
+router.delete("/del/:id",deleteCotizacion);
 
-router.patch("/upd/:id",updateCiclista);
+router.patch("/upd/:id",updateCotizacion);
 
 export default router;

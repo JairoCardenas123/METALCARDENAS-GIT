@@ -1,6 +1,6 @@
 import Cotizaciones from "../models/Cotizaciones.js";
 
-const obtainCiclista = async (req,res)=>{
+const obtainCotizacion = async (req,res)=>{
     try {
         const clientes= await Cotizaciones.find();
         res.json(clientes)
@@ -11,18 +11,8 @@ const obtainCiclista = async (req,res)=>{
 }
 
 
-const obtainOneCiclista = async(req,res)=>{
-    try {
-        const ciclista = await Catalogo.findOne({_id:req.params.id});
-        res.json(ciclista)
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
-const insertCiclista= async(req,res)=>{
-    const ciclista = new Catalogo(req.body);
+const insertCotizacion= async(req,res)=>{
+    const ciclista = new Cotizaciones(req.body);
     
     try {
         const newCiclista = await ciclista.save();
@@ -33,10 +23,20 @@ const insertCiclista= async(req,res)=>{
     }
 }
 
-
-const deleteCiclista = async (req, res)=>{
+const obtainOneCotizacion = async(req,res)=>{
     try {
-        await Catalogo.deleteOne({_id:req.params.id});
+        const ciclista = await Cotizaciones.findOne({_id:req.params.id});
+        res.json(ciclista)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+const deleteCotizacion = async (req, res)=>{
+    try {
+        await Cotizaciones.deleteOne({_id:req.params.id});
         res.status(200).send({
             response:"A la verga la info"
         })
@@ -45,7 +45,7 @@ const deleteCiclista = async (req, res)=>{
     }
 }
 
-const updateCiclista = async (req, res)=>{{
+const updateCotizacion = async (req, res)=>{{
     try {
         const ciclista = await Catalogo.findOne({_id:req.params.id})
 
@@ -81,9 +81,9 @@ const updateCiclista = async (req, res)=>{{
 }}
 
 export {
-    obtainCiclista,
-    obtainOneCiclista,
-    insertCiclista,
-    deleteCiclista,
-    updateCiclista
+    obtainCotizacion,
+    obtainOneCotizacion,
+    insertCotizacion,
+    deleteCotizacion,
+    updateCotizacion
 }
