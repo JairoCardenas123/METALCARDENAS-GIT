@@ -49,7 +49,7 @@ const deleteCliente = async (req, res)=>{
 const updateCliente = async (req, res)=>{{
     try {
         const clientes = await Clientes.findOne({_id:req.params.id})
-
+        console.log(clientes);
         if (req.body.nombre) {
             clientes.nombre = req.body.nombre;
             

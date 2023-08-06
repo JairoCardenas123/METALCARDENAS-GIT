@@ -1,6 +1,6 @@
-/* const urlCatalogos = "http://localhost:8001/api/Catalogos"
- */const urlCotizaciones = "http://localhost:8001/api/Cotizaciones"
-const urlClientes = "http://localhost:8001/api/Clientes"
+/*  const urlCatalogos = "http://localhost:8001/api/Catalogos"
+ */ const urlCotizaciones = "http://localhost:8003/api/Cotizaciones"
+const urlClientes = "http://localhost:8003/api/Clientes"
 
 /* export const getCatalogos = async()=>{
     try {
@@ -98,25 +98,36 @@ export const deleteCotizaciones = async (id) => {
 };
 
 
-
-/* 
-export const editarClientes = async (clientes,id) => {
+export async function oneEquipos(id){
     try {
-        await fetch(`${urlClientes}/upd/${id}`,{
-            method:'PUT',
-            body:JSON.stringify(clientes),
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
-/*         window.location.href = 'clientes.html'
- */    /* } catch (error) {
+        const equipos = await fetch(`${urlClientes}/one/${id}`);
+        console.log(equipos);
+        return equipos.json();
+        
+    } catch (error) {
         console.log(error);
     }
- 
-};
-  */ 
+}
 
+
+
+
+export const editarClientes = async (_id,cliente) => {
+    try {
+        await fetch(`${urlClientes}/upd/${_id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(cliente), // Aquí se envía el objeto cliente en el cuerpo de la solicitud
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        window.location.href = "clientes.html"
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+ 
 
 /* export const obtenerCategory = async (id) => {
  
