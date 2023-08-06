@@ -98,16 +98,28 @@ export const deleteCotizaciones = async (id) => {
 };
 
 
-export async function oneEquipos(id){
+export async function oneClientes(id){
     try {
-        const equipos = await fetch(`${urlClientes}/one/${id}`);
-        console.log(equipos);
-        return equipos.json();
+        const clientes = await fetch(`${urlClientes}/one/${id}`);
+        console.log(clientes);
+        return clientes.json();
         
     } catch (error) {
         console.log(error);
     }
 }
+
+export async function oneCotizaciones(id){
+    try {
+        const cotizaciones = await fetch(`${urlCotizaciones}/one/${id}`);
+        console.log(cotizaciones);
+        return cotizaciones.json();
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 
@@ -123,6 +135,22 @@ export const editarClientes = async (_id,cliente) => {
         });
         window.location.href = "clientes.html"
     } catch (error) {
+        console.log(error);
+    }
+};
+
+
+export const editarCotizaciones = async (_id,cliente) => {
+    try {
+        await fetch(`${urlCotizaciones}/upd/${_id}`, {
+            method: 'PATCH',
+            body: JSON.stringify(cliente), // Aquí se envía el objeto cliente en el cuerpo de la solicitud
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+     window.location.href = "cotizaciones.html"
+     } catch (error) {
         console.log(error);
     }
 };

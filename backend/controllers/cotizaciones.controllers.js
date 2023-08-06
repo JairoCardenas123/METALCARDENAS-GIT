@@ -47,29 +47,34 @@ const deleteCotizacion = async (req, res)=>{
 
 const updateCotizacion = async (req, res)=>{{
     try {
-        const ciclista = await Catalogo.findOne({_id:req.params.id})
+        const ciclista = await Cotizaciones.findOne({_id:req.params.id})
+        console.log(ciclista);
+        if (req.body.Cliente) {
+            ciclista.Cliente = req.body.Cliente;
+            
+        }
+        if (req.body.Concepto) {
+            ciclista.Concepto = req.body.Concepto;
+            
+        }
 
-        if (req.body.nombre) {
-            ciclista.nombre = req.body.nombre;
+        if (req.body.ModoDePago) {
+            ciclista.ModoDePago = req.body.ModoDePago;
             
         }
-        if (req.body.edad) {
-            ciclista.edad = req.body.edad;
+        if (req.body.PlazoFinal) {
+            ciclista.PlazoFinal = req.body.PlazoFinal;
+            
+        }
+        if (req.body.Criterios) {
+            ciclista.Criterios = req.body.Criterios;
+            
+        }
+        if (req.body.Costo) {
+            ciclista.Costo = req.body.Costo;
             
         }
 
-        if (req.body.país) {
-            ciclista.país = req.body.país;
-            
-        }
-        if (req.body.equipo) {
-            ciclista.equipo = req.body.equipo;
-            
-        }
-        if (req.body.victorias) {
-            ciclista.victorias = req.body.victorias;
-            
-        }
   
 
         await ciclista.save();

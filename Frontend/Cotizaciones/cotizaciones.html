@@ -24,6 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/about.css">
 </head>
 
 <body>
@@ -149,19 +150,35 @@
             <div class="modal-body">
               <form id="formularioUpdate">
                 <div class="mb-3">
-                  <label for="CatalogoNombre" class="col-form-label">Categoria Nombre:</label>
-                  <input type="text" class="form-control formTam" id="CategoriaNombreUpdate" />
+                  <label for="Cliente" class="col-form-label">Cliente:</label>
+                  <input type="text" class="form-control formTam" id="clienteUpdate" />
                 </div>
                
                 <div class="mb-3">
-                  <label for="Descripcion" class="col-form-label">Descripcion:</label>
-                  <input type="text" class="form-control formTam" id="DescripcionUpdate" />
+                  <label for="Concepto" class="col-form-label">Concepto:</label>
+                  <input type="text" class="form-control formTam" id="conceptoUpdate" />
                 </div>
       
                 <div class="mb-3">
-                  <label for="Imagen" class="col-form-label">Imagen:</label>
-                  <input type="text" class="form-control formTam" id="ImagenUpdate" />
+                  <label for="ModoDePago" class="col-form-label">Modo De Pago:</label>
+                  <input type="text" class="form-control formTam" id="modoDePagoUpdate" />
                 </div>
+
+                <div class="mb-3">
+                  <label for="PlazoFinal" class="col-form-label">Plazo final:</label>
+                  <input type="text" class="form-control formTam" id="plazoFinalUpdate" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="Criterios" class="col-form-label">Criterios:</label>
+                  <input type="text" class="form-control formTam" id="criteriosUpdate" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="Costo" class="col-form-label">Costo:</label>
+                  <input type="text" class="form-control formTam" id="costoUpdate" />
+                </div>
+
                 <input id="idUpdate" name="idUpdate" type="hidden" value="">
                 <button type="submit" class="btn btn-dark update" data-bs-dismiss="modal">Submit</button>
               </form>
@@ -177,8 +194,8 @@
       <!--Tabla Agregar Start-->
     <div class="cotizaciones container">
      
-        <table class="table table-success table-striped table-bordered">
-          <thead class="thead-light">
+        <table class="table table-primary table-info table-bordered">
+          <thead class="thead-dark">
             <tr>
               <th>Cliente</th>
               <th>Concepto</th>
@@ -187,6 +204,7 @@
               <th>Criterios</th>
               <th>Costo Final</th>
               <th>Eliminar</th>
+              <th>Editar</th>
 
 <!--               <th>delete</th>
               <th>update</th> -->

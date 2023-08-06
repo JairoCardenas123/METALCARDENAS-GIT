@@ -1,4 +1,4 @@
- import {getClientes,insertClientes,deleteClientes,editarClientes,oneEquipos}  from "../js/API.js";
+ import {getClientes,insertClientes,deleteClientes,editarClientes,oneClientes}  from "../js/API.js";
 
 addEventListener('DOMContentLoaded',()=>{
     cargaCatalogos();
@@ -128,7 +128,7 @@ function showEdit(){
 
         editar.addEventListener('click', async ()=>{
             const id = editar.id;
-            const ciclista = await oneEquipos(id);
+            const ciclista = await oneClientes(id);
             console.log(ciclista);
 
             nombreCiclistaEdit.value= ciclista.nombre;

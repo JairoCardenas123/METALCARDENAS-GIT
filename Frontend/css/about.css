@@ -6,3 +6,10 @@
     border-radius: 10px;
 
 }
+
+.btn{
+    background-color: rgb(79, 124, 190);
+    border: 1px rgb(78, 104, 252) solid !important;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
