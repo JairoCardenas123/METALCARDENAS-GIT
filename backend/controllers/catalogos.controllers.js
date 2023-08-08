@@ -25,8 +25,8 @@ const insertCatalogo= async(req,res)=>{
 
 const obtainOneCiclista = async(req,res)=>{
     try {
-        const ciclista = await Catalogos.findOne({_id:req.params.id});
-        res.json(ciclista)
+        const catalogo = await Catalogos.findOne({_id:req.params.id});
+        res.json(catalogo)
     } catch (error) {
         console.log(error);
     }
@@ -34,7 +34,7 @@ const obtainOneCiclista = async(req,res)=>{
 
 const deleteCiclista = async (req, res)=>{
     try {
-        await Catalogo.deleteOne({_id:req.params.id});
+        await Catalogos.deleteOne({_id:req.params.id});
         res.status(200).send({
             response:"A la verga la info"
         })
@@ -45,33 +45,33 @@ const deleteCiclista = async (req, res)=>{
 
 const updateCiclista = async (req, res)=>{{
     try {
-        const ciclista = await Catalogo.findOne({_id:req.params.id})
+        const catalogo = await Catalogo.findOne({_id:req.params.id})
 
         if (req.body.nombre) {
-            ciclista.nombre = req.body.nombre;
+            catalogo.nombre = req.body.nombre;
             
         }
         if (req.body.edad) {
-            ciclista.edad = req.body.edad;
+            catalogo.edad = req.body.edad;
             
         }
 
         if (req.body.país) {
-            ciclista.país = req.body.país;
+            catalogo.país = req.body.país;
             
         }
         if (req.body.equipo) {
-            ciclista.equipo = req.body.equipo;
+            catalogo.equipo = req.body.equipo;
             
         }
         if (req.body.victorias) {
-            ciclista.victorias = req.body.victorias;
+            catalogo.victorias = req.body.victorias;
             
         }
   
 
-        await ciclista.save();
-        res.send(ciclista);
+        await catalogo.save();
+        res.send(catalogo);
 
     } catch (error) {
         console.log(error);

@@ -2,8 +2,8 @@ import Clientes from "../models/Clientes.js";
 
 const obtainCliente = async (req,res)=>{
     try {
-        const clientes= await Clientes.find();
-        res.json(clientes)
+        const cliente= await Clientes.find();
+        res.json(cliente)
 
     } catch (error) {
         console.log("error");
@@ -12,10 +12,10 @@ const obtainCliente = async (req,res)=>{
 
 
 const insertClientes= async(req,res)=>{
-    const ciclista = new Clientes(req.body);
+    const cliente = new Clientes(req.body);
     
     try {
-        const newCiclista = await ciclista.save();
+        const newCiclista = await cliente.save();
         res.json(newCiclista);
 
     } catch (error) {
@@ -25,8 +25,8 @@ const insertClientes= async(req,res)=>{
 
 const obtainOneCliente = async(req,res)=>{
     try {
-        const ciclista = await Clientes.findOne({_id:req.params.id});
-        res.json(ciclista)
+        const cliente = await Clientes.findOne({_id:req.params.id});
+        res.json(cliente)
     } catch (error) {
         console.log(error);
     }

@@ -2,8 +2,8 @@ import Cotizaciones from "../models/Cotizaciones.js";
 
 const obtainCotizacion = async (req,res)=>{
     try {
-        const clientes= await Cotizaciones.find();
-        res.json(clientes)
+        const cotizaciones= await Cotizaciones.find();
+        res.json(cotizaciones)
 
     } catch (error) {
         console.log("error");
@@ -12,10 +12,10 @@ const obtainCotizacion = async (req,res)=>{
 
 
 const insertCotizacion= async(req,res)=>{
-    const ciclista = new Cotizaciones(req.body);
+    const cotizaciones = new Cotizaciones(req.body);
     
     try {
-        const newCiclista = await ciclista.save();
+        const newCiclista = await cotizaciones.save();
         res.json(newCiclista);
 
     } catch (error) {
@@ -25,8 +25,8 @@ const insertCotizacion= async(req,res)=>{
 
 const obtainOneCotizacion = async(req,res)=>{
     try {
-        const ciclista = await Cotizaciones.findOne({_id:req.params.id});
-        res.json(ciclista)
+        const cotizaciones = await Cotizaciones.findOne({_id:req.params.id});
+        res.json(cotizaciones)
     } catch (error) {
         console.log(error);
     }
@@ -47,38 +47,38 @@ const deleteCotizacion = async (req, res)=>{
 
 const updateCotizacion = async (req, res)=>{{
     try {
-        const ciclista = await Cotizaciones.findOne({_id:req.params.id})
-        console.log(ciclista);
+        const cotizaciones = await Cotizaciones.findOne({_id:req.params.id})
+        console.log(cotizaciones);
         if (req.body.Cliente) {
-            ciclista.Cliente = req.body.Cliente;
+            cotizaciones.Cliente = req.body.Cliente;
             
         }
         if (req.body.Concepto) {
-            ciclista.Concepto = req.body.Concepto;
+            cotizaciones.Concepto = req.body.Concepto;
             
         }
 
         if (req.body.ModoDePago) {
-            ciclista.ModoDePago = req.body.ModoDePago;
+            cotizaciones.ModoDePago = req.body.ModoDePago;
             
         }
         if (req.body.PlazoFinal) {
-            ciclista.PlazoFinal = req.body.PlazoFinal;
+            cotizaciones.PlazoFinal = req.body.PlazoFinal;
             
         }
         if (req.body.Criterios) {
-            ciclista.Criterios = req.body.Criterios;
+            cotizaciones.Criterios = req.body.Criterios;
             
         }
         if (req.body.Costo) {
-            ciclista.Costo = req.body.Costo;
+            cotizaciones.Costo = req.body.Costo;
             
         }
 
   
 
-        await ciclista.save();
-        res.send(ciclista);
+        await cotizaciones.save();
+        res.send(cotizaciones);
 
     } catch (error) {
         console.log(error);
