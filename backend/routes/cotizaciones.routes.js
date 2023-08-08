@@ -12,11 +12,11 @@ router.get("/all",obtainCotizacion);
 router.get("/one/:id",obtainOneCotizacion);
 
 router.post("/add",[
-    check('nombre','Nombre es requerido').not().isEmpty(),
-    check('cotizaciones').custom(async(cotizaciones='')=>{
-        const existeEquipo = await Cotizaciones.findOne({cotizaciones});
+    check('Cliente','Nombre es requerido').not().isEmpty(),
+    check('concepto').custom(async(concepto='')=>{
+        const existeEquipo = await Cotizaciones.findOne({concepto});
         if (!existeEquipo) {
-            throw new Error(`El cotizaciones ${cotizaciones} no esta registrado`)
+            throw new Error(`El concepto ${concepto} no esta registrado`)
             
         }
 

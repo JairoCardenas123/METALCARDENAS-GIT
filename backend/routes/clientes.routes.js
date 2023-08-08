@@ -14,10 +14,10 @@ router.get("/one/:id",obtainOneCliente);
 
 router.post("/add",[
     check('nombre','Nombre es requerido').not().isEmpty(),
-    check('cliente').custom(async(cliente='')=>{
-        const existeEquipo = await Clientes.findOne({cliente});
+    check('email').custom(async(email='')=>{
+        const existeEquipo = await Clientes.findOne({email});
         if (!existeEquipo) {
-            throw new Error(`El cliente ${cliente} no esta registrado`)
+            throw new Error(`El email ${email} no esta registrado`)
             
         }
 
